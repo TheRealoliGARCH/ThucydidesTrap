@@ -1,0 +1,1202 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 12.1' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[     50130,       1194]
+NotebookOptionsPosition[     43521,       1068]
+NotebookOutlinePosition[     43926,       1084]
+CellTagsIndexPosition[     43883,       1081]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"(*", " ", 
+   RowBox[{
+    RowBox[{"Thucydides", "'"}], " ", "Trap", " ", "Mathematica", " ", 
+    "Notebook"}], " ", "*)"}], "\[IndentingNewLine]", 
+  RowBox[{"(*", " ", 
+   RowBox[{
+    RowBox[{"Source", ":", " ", 
+     RowBox[{
+     "Belfer", " ", "Center", " ", "for", " ", "Science", " ", "and", " ", 
+      "International", " ", "Affairs"}]}], ",", " ", 
+    RowBox[{"Harvard", " ", "University"}]}], " ", "*)"}], 
+  "\[IndentingNewLine]", 
+  RowBox[{"(*", " ", 
+   RowBox[{"Author", ":", " ", 
+    RowBox[{"Soumadeep", " ", "Ghosh"}]}], " ", "*)"}]}]], "Input",
+ CellChangeTimes->{{3.8859487187450266`*^9, 3.885948759955504*^9}, {
+  3.885948808276958*^9, 3.8859488367705507`*^9}, {3.8859488669052887`*^9, 
+  3.885948895160139*^9}},
+ CellLabel->"In[1]:=",ExpressionUUID->"6667177e-3fdb-42d0-bb2f-5d25c9208a84"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"data", "=", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{
+      RowBox[{"{", 
+       RowBox[{
+       "\"\<Late 15th century\>\"", ",", "\"\<Portugal\>\"", ",", 
+        "\"\<Spain\>\"", ",", "\"\<Global empire and trade\>\""}], "}"}], 
+      "\[Rule]", " ", "\"\<No War\>\""}], ",", "\[IndentingNewLine]", 
+     RowBox[{
+      RowBox[{"{", 
+       RowBox[{
+       "\"\<First half of 16th century\>\"", ",", "\"\<France\>\"", ",", 
+        "\"\<Hapsburgs\>\"", ",", "\"\<Land power in western Europe\>\""}], 
+       "}"}], "\[Rule]", "\"\<War\>\""}], ",", "\[IndentingNewLine]", 
+     RowBox[{
+      RowBox[{"{", 
+       RowBox[{
+       "\"\<16 and 17 centuries\>\"", ",", "\"\<Hapsburgs\>\"", ",", 
+        "\"\<Ottoman Empire\>\"", ",", 
+        "\"\<Land power in central and eastern Europe, sea power in the \
+Mediterranean\>\""}], "}"}], "\[Rule]", " ", "\"\<War\>\""}], ",", 
+     "\[IndentingNewLine]", 
+     RowBox[{
+      RowBox[{"{", 
+       RowBox[{
+       "\"\<First half of 17 century\>\"", ",", "\"\<Hapsburgs\>\"", ",", 
+        "\"\<Sweden\>\"", ",", 
+        "\"\<Land and sea power in northern Europe\>\""}], "}"}], "\[Rule]", 
+      " ", "\"\<War\>\""}], ",", "\[IndentingNewLine]", 
+     RowBox[{
+      RowBox[{"{", 
+       RowBox[{
+       "\"\<Mid-to-late 17 century\>\"", ",", "\"\<Dutch Republic\>\"", ",", 
+        "\"\<England\>\"", ",", 
+        "\"\<Global empire, sea power, and trade\>\""}], "}"}], "\[Rule]", 
+      " ", "\"\<War\>\""}], ",", "\[IndentingNewLine]", 
+     RowBox[{
+      RowBox[{"{", 
+       RowBox[{
+       "\"\<Late 17 to mid-18th centuries\>\"", ",", "\"\<France\>\"", ",", 
+        "\"\<Great Britain\>\"", ",", 
+        "\"\<Global empire and European land power\>\""}], "}"}], "\[Rule]", 
+      "\"\<War\>\""}], ",", "\[IndentingNewLine]", 
+     RowBox[{
+      RowBox[{"{", 
+       RowBox[{
+       "\"\<Late 18th and early 19th centuries\>\"", ",", 
+        "\"\<United Kingdom\>\"", ",", "\"\<France\>\"", ",", 
+        "\"\<Land and sea power in Europe\>\""}], "}"}], "\[Rule]", 
+      "\"\<War\>\""}], ",", "\[IndentingNewLine]", 
+     RowBox[{
+      RowBox[{"{", 
+       RowBox[{
+       "\"\<Mid-19th century\>\"", ",", "\"\<France and United Kingdom\>\"", 
+        ",", "\"\<Russia\>\"", ",", 
+        "\"\<Global empire, influence in Central Asia and eastern \
+Mediterranean\>\""}], "}"}], "\[Rule]", "\"\<War\>\""}], ",", 
+     "\[IndentingNewLine]", 
+     RowBox[{
+      RowBox[{"{", 
+       RowBox[{
+       "\"\<Mid-19th century\>\"", ",", "\"\<France\>\"", ",", 
+        "\"\<Germany\>\"", ",", "\"\<Land power in Europe\>\""}], "}"}], 
+      "\[Rule]", "\"\<War\>\""}], ",", "\[IndentingNewLine]", 
+     RowBox[{
+      RowBox[{"{", 
+       RowBox[{
+       "\"\<Late 19 and early 20 centuries\>\"", ",", 
+        "\"\<China and Russia\>\"", ",", "\"\<Japan\>\"", ",", 
+        "\"\<Land and sea power in East Asia\>\""}], "}"}], "\[Rule]", 
+      "\"\<War\>\""}], ",", "\[IndentingNewLine]", 
+     RowBox[{
+      RowBox[{"{", 
+       RowBox[{
+       "\"\<Early 20th century\>\"", ",", "\"\<United Kingdom\>\"", ",", 
+        "\"\<United States\>\"", ",", 
+        "\"\<Global economic dominance and naval supremacy in the Western \
+Hemisphere\>\""}], "}"}], "\[Rule]", "\"\<No War\>\""}], ",", 
+     "\[IndentingNewLine]", 
+     RowBox[{
+      RowBox[{"{", 
+       RowBox[{
+       "\"\<Early 20th century\>\"", ",", 
+        "\"\<United Kingdom supported by France, Russia\>\"", ",", 
+        "\"\<Germany\>\"", ",", 
+        "\"\<Land power in Europe and global sea power\>\""}], "}"}], 
+      "\[Rule]", " ", "\"\<War\>\""}], ",", "\[IndentingNewLine]", 
+     RowBox[{
+      RowBox[{"{", 
+       RowBox[{
+       "\"\<Mid-20th century\>\"", ",", "\"\<Soviet Union, France, UK\>\"", 
+        ",", "\"\<Germany\>\"", ",", "\"\<Land and sea power in Europe\>\""}],
+        "}"}], "\[Rule]", "\"\<War\>\""}], ",", "\[IndentingNewLine]", 
+     RowBox[{
+      RowBox[{"{", 
+       RowBox[{
+       "\"\<Mid-20th century\>\"", ",", "\"\<United States\>\"", ",", 
+        "\"\<Japan\>\"", ",", 
+        "\"\<Sea power and influence in the Asia-Pacific region\>\""}], "}"}],
+       "\[Rule]", "\"\<War\>\""}], ",", "\[IndentingNewLine]", 
+     RowBox[{
+      RowBox[{"{", 
+       RowBox[{
+       "\"\<1940s-1980s\>\"", ",", "\"\<United States\>\"", ",", 
+        "\"\<Soviet Union\>\"", ",", "\"\<Global power\>\""}], "}"}], 
+      "\[Rule]", " ", "\"\<No War\>\""}], ",", "\[IndentingNewLine]", 
+     RowBox[{
+      RowBox[{"{", 
+       RowBox[{
+       "\"\<1990s-present\>\"", ",", "\"\<United Kingdom and France\>\"", 
+        ",", "\"\<Germany\>\"", ",", 
+        "\"\<Political influence in Europe\>\""}], "}"}], "\[Rule]", 
+      "\"\<No War\>\""}]}], "}"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"c", "=", 
+   RowBox[{"Classify", "[", "data", "]"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{"Information", "[", "c", "]"}]}], "Input",
+ CellChangeTimes->{{3.850717681793174*^9, 3.8507178613314896`*^9}, {
+   3.8507180795330725`*^9, 3.850718265126598*^9}, 3.850718378199997*^9, {
+   3.850718548208296*^9, 3.8507185836047573`*^9}, {3.850719737841711*^9, 
+   3.8507198357474833`*^9}, {3.850719866510737*^9, 3.8507198666511374`*^9}, {
+   3.850719904262803*^9, 3.8507199060724063`*^9}, {3.8507199950081625`*^9, 
+   3.850720008236986*^9}, {3.8552075563233385`*^9, 3.855207562010641*^9}, {
+   3.8552086173421836`*^9, 3.8552086399507885`*^9}, {3.8678891733000655`*^9, 
+   3.8678891747375145`*^9}, 3.8859487126052403`*^9, 3.8859487625875225`*^9},
+ CellLabel->"In[2]:=",ExpressionUUID->"01387ae7-6a34-441e-b422-327ae10a0cc7"],
+
+Cell[BoxData[
+ TagBox[
+  StyleBox[
+   FrameBox[GridBox[{
+      {
+       ItemBox[
+        FrameBox[
+         StyleBox["\<\"Classifier information\"\>", "SuggestionsBarText",
+          StripOnInput->False,
+          FontSize->12],
+         FrameMargins->{{10, 5}, {-4, 2}},
+         FrameStyle->None,
+         StripOnInput->False],
+        Alignment->{Left, Bottom},
+        Background->RGBColor[0.96, 0.96, 0.96],
+        Frame->{{False, False}, {True, False}},
+        FrameStyle->Opacity[0.1],
+        ItemSize->{Automatic, 1},
+        StripOnInput->False]},
+      {
+       ItemBox[
+        TagBox[
+         FrameBox[
+          TagBox[GridBox[{
+             {
+              TemplateBox[{
+                TemplateBox[{5}, "Spacer1"], 
+                StyleBox["\"Data type\"", 
+                 GrayLevel[0.4], StripOnInput -> False]},
+               "RowDefault"], 
+              TagBox[
+               TooltipBox[
+                TemplateBox[{"\"Mixed\"", 
+                  StyleBox[
+                   
+                   TemplateBox[{"\" (number: \"", "4", "\")\""}, 
+                    "RowDefault"], 
+                   GrayLevel[0.5], StripOnInput -> False]},
+                 "RowDefault"],
+                TagBox[
+                 RowBox[{"{", 
+                   
+                   RowBox[{
+                    "\"Text\"", ",", "\"Text\"", ",", "\"Text\"", ",", 
+                    "\"Text\""}], "}"}], Short[#, 10]& ]],
+               Annotation[#, 
+                Short[{"Text", "Text", "Text", "Text"}, 10], "Tooltip"]& ]},
+             {
+              TemplateBox[{
+                TemplateBox[{5}, "Spacer1"], 
+                StyleBox["\"Classes\"", 
+                 GrayLevel[0.4], StripOnInput -> False]},
+               "RowDefault"], 
+              TemplateBox[{",", "\",\"", "\"No War\"", "\"War\""},
+               "RowWithSeparators"]},
+             {
+              TemplateBox[{
+                TemplateBox[{5}, "Spacer1"], 
+                StyleBox["\"Accuracy\"", 
+                 GrayLevel[0.4], StripOnInput -> False]},
+               "RowDefault"], 
+              TemplateBox[{
+                RowBox[{"(", 
+                  InterpretationBox[
+                   
+                   TemplateBox[{"64.", "40."}, "Around", SyntaxForm -> 
+                    PlusMinus], 
+                   Around[
+                   63.8465150300576738118`3., 39.5743124444676155349`3.]], 
+                  ")"}], "\"%\"", "percent", "\"Percent\""},
+               "QuantityPostfix"]},
+             {
+              TemplateBox[{
+                TemplateBox[{5}, "Spacer1"], 
+                StyleBox["\"Method\"", 
+                 GrayLevel[0.4], StripOnInput -> False]},
+               "RowDefault"], 
+              TagBox[
+               TooltipBox["\<\"LogisticRegression\"\>",
+                StyleBox[
+                 TagBox[
+                  
+                  GridBox[{{"\"L1Regularization\"", "0"}, {
+                    "\"L2Regularization\"", "100.`"}, {
+                    "\"OptimizationMethod\"", "\"LBFGS\""}}, 
+                   GridBoxAlignment -> {"Columns" -> {{Left}}}, AutoDelete -> 
+                   False, GridBoxBackground -> {"Columns" -> {{
+                    GrayLevel[0.95], 
+                    Opacity[0.8, 
+                    GrayLevel[1]]}}, "Rows" -> {{None}}}, 
+                   GridBoxFrame -> {
+                    "Columns" -> {{True}}, "Rows" -> {{True}}}, 
+                   GridBoxItemSize -> {
+                    "Columns" -> {{Automatic}}, "Rows" -> {{Automatic}}}, 
+                   GridBoxSpacings -> {"Columns" -> {{1}}, "Rows" -> {{1}}}, 
+                   FrameStyle -> GrayLevel[0.84]], "Grid"], FontFamily -> 
+                 "Verdana", StripOnInput -> False]],
+               Annotation[#, 
+                Style[
+                 
+                 Grid[{{"L1Regularization", 0}, {"L2Regularization", 100.}, {
+                   "OptimizationMethod", "LBFGS"}}, Alignment -> Left, Frame -> 
+                  All, FrameStyle -> GrayLevel[0.84], Spacings -> {1, 1}, 
+                  Background -> {{{
+                    GrayLevel[0.95], 
+                    Opacity[0.8, 
+                    GrayLevel[1]]}}, None}], FontFamily -> "Verdana"], 
+                "Tooltip"]& ]},
+             {
+              TemplateBox[{
+                TemplateBox[{5}, "Spacer1"], 
+                StyleBox["\"Single evaluation time\"", 
+                 GrayLevel[0.4], StripOnInput -> False]},
+               "RowDefault"], 
+              TemplateBox[{"8.9`", 
+                
+                RowBox[{
+                 "\"ms\"", "\[InvisibleSpace]", "\"/\"", "\[InvisibleSpace]", 
+                  "\"example\""}], "milliseconds per example", 
+                FractionBox["\"Milliseconds\"", "\"Examples\""]},
+               "Quantity"]},
+             {
+              TemplateBox[{
+                TemplateBox[{5}, "Spacer1"], 
+                StyleBox["\"Batch evaluation speed\"", 
+                 GrayLevel[0.4], StripOnInput -> False]},
+               "RowDefault"], 
+              TemplateBox[{"543.`", 
+                
+                RowBox[{
+                 "\"examples\"", "\[InvisibleSpace]", "\"/\"", 
+                  "\[InvisibleSpace]", "\"s\""}], "examples per second", 
+                FractionBox["\"Examples\"", "\"Seconds\""]},
+               "Quantity"]},
+             {
+              TemplateBox[{
+                TemplateBox[{5}, "Spacer1"], 
+                StyleBox[
+                 TagBox[
+                  TooltipBox[
+                  "\"Loss\"", "\"Mean cross entropy\"", LabelStyle -> 
+                   "TextStyling"], 
+                  Annotation[#, "Mean cross entropy", "Tooltip"]& ], 
+                 GrayLevel[0.4], StripOnInput -> False]},
+               "RowDefault"], 
+              TagBox[
+               TooltipBox[
+                TemplateBox[{"0.6366058863920284194`3.", 
+                  StyleBox[
+                   
+                   TemplateBox[{
+                    "\" \[PlusMinus] \"", "0.1516337930860177374`2."}, 
+                    "RowDefault"], {10, 
+                    Opacity[0.5]}, StripOnInput -> False]},
+                 "RowDefault"],
+                TemplateBox[{
+                 "\"95% confidence interval: [\"", "0.3333383002199929446`3.",
+                   "\", \"", "0.9398734725640638388`3.", "\"]\""}, 
+                 "RowDefault"],
+                TooltipStyle->{}],
+               Annotation[#, 
+                
+                Row[{"95% confidence interval: [", 0.3333383002199929446`3., 
+                  ", ", 0.9398734725640638388`3., "]"}], "Tooltip"]& ]},
+             {
+              TemplateBox[{
+                TemplateBox[{5}, "Spacer1"], 
+                StyleBox["\"Model memory\"", 
+                 GrayLevel[0.4], StripOnInput -> False]},
+               "RowDefault"], 
+              TemplateBox[{"259.`", "\"kB\"", "kilobytes", "\"Kilobytes\""},
+               "Quantity"]},
+             {
+              TemplateBox[{
+                TemplateBox[{5}, "Spacer1"], 
+                StyleBox["\"Training examples used\"", 
+                 GrayLevel[0.4], StripOnInput -> False]},
+               "RowDefault"], 
+              TemplateBox[{"16", "\"examples\"", "examples", "\"Examples\""},
+               "Quantity"]},
+             {
+              TemplateBox[{
+                TemplateBox[{5}, "Spacer1"], 
+                StyleBox["\"Training time\"", 
+                 GrayLevel[0.4], StripOnInput -> False]},
+               "RowDefault"], 
+              TemplateBox[{"4.2`", "\"s\"", "seconds", "\"Seconds\""},
+               "Quantity"]}
+            },
+            AutoDelete->False,
+            ColumnsEqual->False,
+            
+            GridBoxAlignment->{
+             "Columns" -> {Right, {Left}}, "Rows" -> {{Baseline}}},
+            GridBoxDividers->{"Columns" -> {False, {
+                 Opacity[0.15]}, False}},
+            
+            GridBoxItemSize->{
+             "Columns" -> {Automatic, {Automatic}}, "Rows" -> {{1.}}},
+            GridBoxSpacings->{"Columns" -> {
+                Offset[0.27999999999999997`], 
+                Offset[1.1199999999999999`], {
+                 Offset[1.75]}, 
+                Offset[0.27999999999999997`]}, "Rows" -> {
+                Offset[0.2], {
+                 Offset[0.8]}, 
+                Offset[0.2]}}],
+           "Grid"],
+          FrameMargins->{{10, 10}, {10, 5}},
+          FrameStyle->None,
+          StripOnInput->False],
+         Deploy,
+         DefaultBaseStyle->"Deploy"],
+        Alignment->Center,
+        BaseStyle->{
+         FontWeight -> "Light", FontSize -> 11, FontFamily -> "Segoe UI", 
+          NumberMarks -> False, Deployed -> False},
+        StripOnInput->False]}
+     },
+     DefaultBaseStyle->"Column",
+     GridBoxAlignment->{"Columns" -> {{Left}}, "Rows" -> {{Baseline}}},
+     GridBoxDividers->{"Columns" -> {{False}}, "Rows" -> {{False}}},
+     GridBoxItemSize->{"Columns" -> {{Automatic}}, "Rows" -> {{1.}}},
+     GridBoxSpacings->{"Columns" -> {
+         Offset[0.27999999999999997`], {
+          Offset[0.5599999999999999]}, 
+         Offset[0.27999999999999997`]}, "Rows" -> {
+         Offset[0.2], 
+         Offset[0.8], {
+          Offset[0.4]}, 
+         Offset[0.2]}}],
+    Background->GrayLevel[1],
+    FrameMargins->{{0, 0}, {0, 0}},
+    FrameStyle->GrayLevel[0.85],
+    RoundingRadius->5,
+    StripOnInput->False],
+   StripOnInput->False,
+   LineBreakWithin->False],
+  Deploy,
+  DefaultBaseStyle->"Deploy"]], "Output",
+ CellChangeTimes->{
+  3.86788917678429*^9, 3.868158679269348*^9, 3.868159097464676*^9, 
+   3.8681601401327972`*^9, 3.868161741256116*^9, 3.8681669998990273`*^9, 
+   3.868250755363812*^9, 3.8682608544247293`*^9, 3.8682612814644184`*^9, 
+   3.8682694859926047`*^9, 3.8686645785768394`*^9, {3.868674252803939*^9, 
+   3.868674254647626*^9}, 3.8688741676794586`*^9, 3.8688747980034313`*^9, 
+   3.869010540161727*^9, 3.869220949509454*^9, 3.869221619552075*^9, 
+   3.8692256324843674`*^9, 3.885949033172211*^9},
+ CellLabel->"Out[4]=",ExpressionUUID->"baa71d95-c719-4d21-834a-1d03d4994b2d"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"f", "=", 
+   RowBox[{"{", 
+    RowBox[{
+    "\"\<2000s-2010s\>\"", ",", "\"\<USA\>\"", ",", " ", 
+     "\"\<Rest of the world\>\"", ",", 
+     "\"\<Negative inflation risk premium on the USD\>\""}], "}"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{"c", "[", "f", "]"}]}], "Input",
+ CellChangeTimes->{{3.8552083739593697`*^9, 3.855208378177972*^9}, {
+  3.8552086445912375`*^9, 3.8552086449349785`*^9}},
+ CellLabel->"In[5]:=",ExpressionUUID->"08301fd3-fadd-41eb-86a3-b4d070c9dd9b"],
+
+Cell[BoxData["\<\"War\"\>"], "Output",
+ CellChangeTimes->{
+  3.855208378771696*^9, {3.8552084256763153`*^9, 3.8552084409726586`*^9}, 
+   3.855208597592866*^9, 3.8552086457786927`*^9, 3.867235053069359*^9, 
+   3.867282613488596*^9, {3.867319311300239*^9, 3.867319312735136*^9}, 
+   3.867322148175367*^9, {3.8673237504925537`*^9, 3.8673237590011206`*^9}, {
+   3.867391564793314*^9, 3.8673915662594824`*^9}, 3.867453474802726*^9, 
+   3.8678891820497303`*^9, 3.8682612815548954`*^9, 3.868874807353445*^9, 
+   3.8859490335738745`*^9},
+ CellLabel->"Out[6]=",ExpressionUUID->"c11dd48c-079c-4990-bbb9-c0388b2908e4"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"f", "=", 
+   RowBox[{"{", 
+    RowBox[{
+    "\"\<2020s-2030s\>\"", ",", "\"\<India\>\"", ",", " ", "\"\<China\>\"", 
+     ",", "\"\<Asian rivalry\>\""}], "}"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{"c", "[", "f", "]"}]}], "Input",
+ CellChangeTimes->{{3.8507200285326214`*^9, 3.850720031715027*^9}, {
+  3.8552077666269565`*^9, 3.855207767923793*^9}, {3.8552085664220805`*^9, 
+  3.8552085671876793`*^9}, {3.855208652497233*^9, 3.855208652887829*^9}},
+ CellLabel->"In[7]:=",ExpressionUUID->"ea57b08b-8cd5-4ba9-bd3c-dc8615edea52"],
+
+Cell[BoxData["\<\"War\"\>"], "Output",
+ CellChangeTimes->{
+  3.8507200327758293`*^9, 3.850720654352326*^9, 3.850729324799534*^9, 
+   3.8508126631691465`*^9, 3.850972183097415*^9, 3.851681380831463*^9, 
+   3.851681460252963*^9, 3.854714488985341*^9, 3.855207384141827*^9, 
+   3.855207415437614*^9, 3.855207480341607*^9, 3.8552076364611793`*^9, 
+   3.8552077686737614`*^9, 3.85520838225595*^9, {3.8552084296917996`*^9, 
+   3.855208443331953*^9}, 3.855208601139617*^9, 3.855208653465925*^9, 
+   3.8672350558771176`*^9, 3.8672826168791*^9, {3.867319311532008*^9, 
+   3.8673193157278233`*^9}, 3.8673221512663307`*^9, 3.8673237738049297`*^9, 
+   3.8673915772429852`*^9, 3.8674534854430256`*^9, 3.8682612816151524`*^9, 
+   3.8688748090645256`*^9, 3.8859490336290946`*^9},
+ CellLabel->"Out[8]=",ExpressionUUID->"3352a3e6-44d0-4d13-bd1a-d3312fc3497e"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"f", "=", 
+   RowBox[{"{", 
+    RowBox[{
+    "\"\<2020s-2030s\>\"", ",", "\"\<India\>\"", ",", " ", "\"\<Pakistan\>\"",
+      ",", "\"\<Sibling rivalry\>\""}], "}"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{"c", "[", "f", "]"}]}], "Input",
+ CellChangeTimes->{{3.867290691622258*^9, 3.86729070564713*^9}},
+ CellLabel->"In[9]:=",ExpressionUUID->"03d95bc0-87a4-437f-a64a-cf7db605c9b2"],
+
+Cell[BoxData["\<\"War\"\>"], "Output",
+ CellChangeTimes->{{3.867290718531124*^9, 3.867290729405914*^9}, 
+   3.867319317702089*^9, 3.8673221530901885`*^9, 3.8673237753781886`*^9, 
+   3.8673915791795964`*^9, 3.8674534868648596`*^9, 3.8682612816653476`*^9, 
+   3.8688748102456665`*^9, 3.885949033684085*^9},
+ CellLabel->"Out[10]=",ExpressionUUID->"ba8a4caf-fafe-43a6-88db-58b3197da9c3"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"f", "=", 
+   RowBox[{"{", 
+    RowBox[{
+    "\"\<2020s-2030s\>\"", ",", "\"\<Germany\>\"", ",", " ", "\"\<France\>\"",
+      ",", "\"\<Mutual distrust\>\""}], "}"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{"c", "[", "f", "]"}]}], "Input",
+ CellChangeTimes->{{3.8673194116018667`*^9, 3.867319422417197*^9}},
+ CellLabel->"In[11]:=",ExpressionUUID->"0df5df88-228d-4c29-9e8c-ea15046f6b6c"],
+
+Cell[BoxData["\<\"War\"\>"], "Output",
+ CellChangeTimes->{3.8673194268143578`*^9, 3.867322155635699*^9, 
+  3.867323778333378*^9, 3.867391581301222*^9, 3.8674534887241745`*^9, 
+  3.868261281723587*^9, 3.868874811865758*^9, 3.8859490337390785`*^9},
+ CellLabel->"Out[12]=",ExpressionUUID->"151ced70-3325-4841-aacb-1ece290ee3ed"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"f", "=", 
+   RowBox[{"{", 
+    RowBox[{
+    "\"\<2022\>\"", ",", "\"\<Sweden\>\"", ",", " ", "\"\<Norway\>\"", ",", 
+     "\"\<Severe ideological differences\>\""}], "}"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{"c", "[", "f", "]"}]}], "Input",
+ CellChangeTimes->{{3.868269501835806*^9, 3.8682695312722845`*^9}},
+ CellLabel->"In[13]:=",ExpressionUUID->"8e28672a-671f-489d-8f15-1a43b60e24eb"],
+
+Cell[BoxData["\<\"War\"\>"], "Output",
+ CellChangeTimes->{{3.8682695176789885`*^9, 3.8682695323503494`*^9}, 
+   3.868269619208349*^9, 3.868874813755426*^9, 3.885949033794081*^9},
+ CellLabel->"Out[14]=",ExpressionUUID->"3d7815cf-5460-4e0b-8cb9-da35331ed990"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"f", "=", 
+   RowBox[{"{", 
+    RowBox[{
+    "\"\<2022\>\"", ",", "\"\<Russia\>\"", ",", " ", "\"\<Ukraine\>\"", ",", 
+     "\"\<Gas logistics\>\""}], "}"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{"c", "[", "f", "]"}]}], "Input",
+ CellChangeTimes->{{3.850720015740599*^9, 3.8507200163646*^9}, {
+  3.850729307233903*^9, 3.850729307327503*^9}, {3.850972135213337*^9, 
+  3.8509721654153805`*^9}, {3.851681331632463*^9, 3.851681366277463*^9}, {
+  3.8552086489973536`*^9, 3.8552086493567133`*^9}, {3.8673237601511054`*^9, 
+  3.8673237612855244`*^9}},
+ CellLabel->"In[15]:=",ExpressionUUID->"cc96e3f8-1395-4649-b86a-135f49dd6e74"],
+
+Cell[BoxData["\<\"War\"\>"], "Output",
+ CellChangeTimes->{
+  3.850720017222602*^9, 3.8507206520683203`*^9, {3.8507293143631153`*^9, 
+   3.850729324705934*^9}, 3.8508126558191366`*^9, {3.8509721585833693`*^9, 
+   3.850972170907398*^9}, 3.851681371203463*^9, 3.851681458840963*^9, 
+   3.854714487067737*^9, 3.8552074141251597`*^9, 3.8552074789822793`*^9, 
+   3.855207635336218*^9, 3.855207765611368*^9, {3.85520836970951*^9, 
+   3.855208380834124*^9}, {3.8552084275043783`*^9, 3.855208442097619*^9}, 
+   3.85520859988966*^9, 3.855208649950423*^9, 3.867235054551402*^9, 
+   3.8672826152385345`*^9, {3.8673193114473705`*^9, 3.867319314308324*^9}, 
+   3.8673221497212467`*^9, {3.8673237522128515`*^9, 3.8673237620878286`*^9}, 
+   3.8673915677010126`*^9, 3.867453474943348*^9, 3.8682612817758217`*^9, 
+   3.8688748153129864`*^9, 3.885949033844067*^9},
+ CellLabel->"Out[16]=",ExpressionUUID->"cc0b5519-f23e-45e8-b59a-cccd96d1a954"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"f", "=", 
+   RowBox[{"{", 
+    RowBox[{
+    "\"\<2022\>\"", ",", "\"\<United Kingdom\>\"", ",", " ", "\"\<Russia\>\"",
+      ",", "\"\<Unpaid Russian gas dues\>\""}], "}"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{"c", "[", "f", "]"}]}], "Input",
+ CellChangeTimes->{{3.867322196123098*^9, 3.8673221990910597`*^9}, {
+  3.8673222310506506`*^9, 3.8673222823309937`*^9}},
+ CellLabel->"In[17]:=",ExpressionUUID->"dc93cea2-7b79-4176-8eff-0ef13e9cf3fc"],
+
+Cell[BoxData["\<\"War\"\>"], "Output",
+ CellChangeTimes->{
+  3.867322284942938*^9, {3.867323753685707*^9, 3.8673237635918536`*^9}, 
+   3.8673915692363815`*^9, 3.867453475037094*^9, 3.8682612818360667`*^9, 
+   3.8688748176663485`*^9, 3.8859490339090576`*^9},
+ CellLabel->"Out[18]=",ExpressionUUID->"31e2be9f-ef66-4746-a0da-43e82dfe4ce4"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"f", "=", 
+   RowBox[{"{", 
+    RowBox[{
+    "\"\<2022\>\"", ",", "\"\<USA\>\"", ",", " ", "\"\<Germany\>\"", ",", 
+     "\"\<Extreme distrust\>\""}], "}"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{"c", "[", "f", "]"}]}], "Input",
+ CellChangeTimes->{{3.86826117895216*^9, 3.8682611814371796`*^9}},
+ CellLabel->"In[19]:=",ExpressionUUID->"97df786b-eecc-4d9e-b27e-e73a7fcfa5eb"],
+
+Cell[BoxData["\<\"War\"\>"], "Output",
+ CellChangeTimes->{3.8682611839131594`*^9, 3.868261281896287*^9, 
+  3.8688748191079974`*^9, 3.885949033969059*^9},
+ CellLabel->"Out[20]=",ExpressionUUID->"14f7a7ab-c236-4640-8862-a0f570f408d2"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"f", "=", 
+   RowBox[{"{", 
+    RowBox[{
+    "\"\<2022\>\"", ",", "\"\<Norway\>\"", ",", " ", "\"\<Ukraine\>\"", ",", 
+     "\"\<Revenge for Norwegian killing of a Ukrainian diplomat\>\""}], 
+    "}"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{"c", "[", "f", "]"}]}], "Input",
+ CellChangeTimes->{{3.8686645832983866`*^9, 3.8686646060017924`*^9}, {
+  3.868874820790597*^9, 3.868874822517729*^9}},
+ CellLabel->"In[21]:=",ExpressionUUID->"ea1982ce-f657-4e87-b8b3-638e96e3533d"],
+
+Cell[BoxData["\<\"War\"\>"], "Output",
+ CellChangeTimes->{3.8686646074371614`*^9, 3.8688748232196894`*^9, 
+  3.8859490340390463`*^9},
+ CellLabel->"Out[22]=",ExpressionUUID->"22e07512-b5ec-46e4-a6fa-2ea6bb429a39"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"f", "=", 
+   RowBox[{"{", 
+    RowBox[{
+    "\"\<2022\>\"", ",", "\"\<Germany\>\"", ",", " ", "\"\<Norway\>\"", ",", 
+     "\"\<Revenge for Norwegian killing of a German diplomat\>\""}], "}"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{"c", "[", "f", "]"}]}], "Input",
+ CellChangeTimes->{{3.8690105576726494`*^9, 3.8690105708317523`*^9}},
+ CellLabel->"In[23]:=",ExpressionUUID->"6771d6b6-9bdb-4523-977e-e310dd220f72"],
+
+Cell[BoxData["\<\"War\"\>"], "Output",
+ CellChangeTimes->{3.8690105725365334`*^9, 3.8859490341040387`*^9},
+ CellLabel->"Out[24]=",ExpressionUUID->"bb48bd37-4257-493b-8d77-ba10e3bf3a10"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"f", "=", 
+   RowBox[{"{", 
+    RowBox[{
+    "\"\<2022\>\"", ",", "\"\<India\>\"", ",", " ", "\"\<Norway\>\"", ",", 
+     "\"\<Divine Indian retribution on the demoniac Norwegians\>\""}], 
+    "}"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{"c", "[", "f", "]"}]}], "Input",
+ CellChangeTimes->{{3.868664630134009*^9, 3.8686646410966983`*^9}, {
+  3.868664674394912*^9, 3.8686647059180107`*^9}, {3.8686652332412896`*^9, 
+  3.868665240060974*^9}},
+ CellLabel->"In[25]:=",ExpressionUUID->"f87c4242-72c8-47ab-bf3a-924c325148c2"],
+
+Cell[BoxData["\<\"War\"\>"], "Output",
+ CellChangeTimes->{3.8686646464188137`*^9, 3.86866471019949*^9, 
+  3.8688748256575975`*^9, 3.88594903416504*^9},
+ CellLabel->"Out[26]=",ExpressionUUID->"096734b2-81f6-465d-8d3a-ab068cbee021"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"f", "=", 
+   RowBox[{"{", 
+    RowBox[{
+    "\"\<2022\>\"", ",", "\"\<United Kingdom\>\"", ",", " ", 
+     "\"\<Denmark and Norway\>\"", ",", 
+     "\"\<Premeptive nuclear strike on money-laundered USD reserves held by \
+Nordic nations\>\""}], "}"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{"c", "[", "f", "]"}]}], "Input",
+ CellChangeTimes->{{3.8686645832983866`*^9, 3.8686646060017924`*^9}, {
+  3.868874196882659*^9, 3.8688744535138254`*^9}, {3.868874530224264*^9, 
+  3.8688746104217725`*^9}},
+ CellLabel->"In[27]:=",ExpressionUUID->"5d0d8b63-ce23-4cb4-9c88-388b3cb69a0d"],
+
+Cell[BoxData["\<\"War\"\>"], "Output",
+ CellChangeTimes->{{3.868874220131826*^9, 3.8688742794109783`*^9}, {
+   3.868874314237869*^9, 3.8688744544200172`*^9}, {3.8688745323835506`*^9, 
+   3.868874615806051*^9}, 3.868874830624895*^9, 3.8859490342290397`*^9},
+ CellLabel->"Out[28]=",ExpressionUUID->"9048bab5-32fa-4322-adbe-a5f9aac0fd9f"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"f", "=", 
+   RowBox[{"{", 
+    RowBox[{
+    "\"\<2023\>\"", ",", "\"\<United Kingdom\>\"", ",", " ", "\"\<India\>\"", 
+     ",", "\"\<Treason by certain Indian politicians\>\""}], "}"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{"c", "[", "f", "]"}]}], "Input",
+ CellChangeTimes->{{3.867322196123098*^9, 3.8673221990910597`*^9}, {
+  3.8673222310506506`*^9, 3.8673222823309937`*^9}, {3.8673224715365725`*^9, 
+  3.8673224927670226`*^9}},
+ CellLabel->"In[29]:=",ExpressionUUID->"cb4cd827-a352-486c-a2e6-29e5b8a5ff91"],
+
+Cell[BoxData["\<\"War\"\>"], "Output",
+ CellChangeTimes->{
+  3.867322284942938*^9, {3.8673224991415143`*^9, 3.867322505544325*^9}, 
+   3.8673237657824545`*^9, 3.8673915715271883`*^9, 3.8674534781307497`*^9, 
+   3.8682612819565268`*^9, 3.8688748331944757`*^9, 3.885949034373723*^9},
+ CellLabel->"Out[30]=",ExpressionUUID->"f2780d3d-b8f5-4043-93cf-bd2762a34f8d"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"f", "=", 
+   RowBox[{"{", 
+    RowBox[{
+    "\"\<2023\>\"", ",", "\"\<USA\>\"", ",", " ", "\"\<Saudi Arabia\>\"", 
+     ",", "\"\<Shortage of Saudi oil\>\""}], "}"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{"c", "[", "f", "]"}]}], "Input",
+ CellChangeTimes->{{3.8673237100262046`*^9, 3.867323740260728*^9}},
+ CellLabel->"In[31]:=",ExpressionUUID->"b32596a8-f916-4b10-9318-11e86cc5b0d1"],
+
+Cell[BoxData["\<\"War\"\>"], "Output",
+ CellChangeTimes->{{3.8673237428370347`*^9, 3.8673237675405436`*^9}, 
+   3.8673915737176495`*^9, 3.8674534806306725`*^9, 3.86826128201677*^9, 
+   3.8688748346139765`*^9, 3.885949034443736*^9},
+ CellLabel->"Out[32]=",ExpressionUUID->"b6ff5072-23f7-4601-85fc-1276ba29cb69"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"f", "=", 
+   RowBox[{"{", 
+    RowBox[{
+    "\"\<2023\>\"", ",", "\"\<Iran\>\"", ",", " ", "\"\<USA\>\"", ",", 
+     "\"\<Shortage of USA oil\>\""}], "}"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{"c", "[", "f", "]"}]}], "Input",
+ CellChangeTimes->{{3.8673237100262046`*^9, 3.867323740260728*^9}, {
+   3.8673825178875847`*^9, 3.8673825245533595`*^9}, 3.867382555794115*^9},
+ CellLabel->"In[33]:=",ExpressionUUID->"3c7367a5-992e-4808-b2b6-85033b693925"],
+
+Cell[BoxData["\<\"War\"\>"], "Output",
+ CellChangeTimes->{{3.8673237428370347`*^9, 3.8673237675405436`*^9}, {
+   3.8673825414531784`*^9, 3.8673825577151513`*^9}, 3.86739157540022*^9, 
+   3.867453483068098*^9, 3.8681670048310575`*^9, 3.8682612820769825`*^9, 
+   3.868874836118164*^9, 3.88594903450373*^9},
+ CellLabel->"Out[34]=",ExpressionUUID->"e049b97c-a577-4e23-aa07-880b080ab44a"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"f", "=", 
+   RowBox[{"{", 
+    RowBox[{
+    "\"\<2023\>\"", ",", "\"\<Russia\>\"", ",", " ", "\"\<Germany\>\"", ",", 
+     "\"\<Unpaid Russian gas dues\>\""}], "}"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{"c", "[", "f", "]"}]}], "Input",
+ CellChangeTimes->{{3.867295453175441*^9, 3.8672954655956535`*^9}, {
+   3.8672955676399183`*^9, 3.867295569498533*^9}, 3.8688748380769143`*^9},
+ CellLabel->"In[35]:=",ExpressionUUID->"d88bb70f-5f71-497d-ac9d-0a21cf2a1b0c"],
+
+Cell[BoxData["\<\"War\"\>"], "Output",
+ CellChangeTimes->{{3.8672954712966022`*^9, 3.867295479069103*^9}, {
+   3.8672955766814685`*^9, 3.867295582685175*^9}, 3.8673193197233253`*^9, 
+   3.8673221577106934`*^9, 3.867323779890874*^9, 3.8673915841091037`*^9, 
+   3.8674534914584665`*^9, 3.86826128214522*^9, 3.8688748406843896`*^9, 
+   3.8859490345787516`*^9},
+ CellLabel->"Out[36]=",ExpressionUUID->"e781465c-b453-4d03-932a-29da612bd361"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"f", "=", 
+   RowBox[{"{", 
+    RowBox[{
+    "\"\<2023\>\"", ",", "\"\<Russia\>\"", ",", " ", "\"\<Baltic nations\>\"",
+      ",", "\"\<Unpaid Russian gas dues\>\""}], "}"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{"c", "[", "f", "]"}]}], "Input",
+ CellChangeTimes->{{3.8681601251177235`*^9, 3.868160129336303*^9}},
+ CellLabel->"In[37]:=",ExpressionUUID->"09ec1595-7e28-4766-ab7f-3d3b754bf4ac"],
+
+Cell[BoxData["\<\"War\"\>"], "Output",
+ CellChangeTimes->{3.8681601459763384`*^9, 3.86826128220749*^9, 
+  3.8688748435769415`*^9, 3.8859490346387634`*^9},
+ CellLabel->"Out[38]=",ExpressionUUID->"1f3b4475-5570-4687-835c-b97a54637a61"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"f", "=", 
+   RowBox[{"{", 
+    RowBox[{
+    "\"\<2023\>\"", ",", "\"\<China\>\"", ",", " ", "\"\<Taiwan\>\"", ",", 
+     "\"\<Illegal supply of WMDs to Taiwan by the USA\>\""}], "}"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{"c", "[", "f", "]"}]}], "Input",
+ CellChangeTimes->{{3.8672328921944723`*^9, 3.8672329513602705`*^9}, {
+  3.867233002900983*^9, 3.8672330047844706`*^9}},
+ CellLabel->"In[39]:=",ExpressionUUID->"34607a66-2182-4cac-a513-95d41a4fcd78"],
+
+Cell[BoxData["\<\"War\"\>"], "Output",
+ CellChangeTimes->{{3.867232935899682*^9, 3.8672329520779552`*^9}, {
+   3.8672330054396453`*^9, 3.8672330230378284`*^9}, 3.8672350573812857`*^9, 
+   3.867282618238426*^9, 3.8673193219608035`*^9, 3.8673221604156666`*^9, 
+   3.8673237820336046`*^9, 3.8673915857826586`*^9, 3.8674534933490334`*^9, 
+   3.868261282267734*^9, 3.8688748457140846`*^9, 3.885949034703761*^9},
+ CellLabel->"Out[40]=",ExpressionUUID->"7f17434a-1f0f-4e5c-8bd2-abcf574f49a9"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"f", "=", 
+   RowBox[{"{", 
+    RowBox[{
+    "\"\<2023\>\"", ",", "\"\<USA\>\"", ",", " ", "\"\<Vietnam\>\"", ",", 
+     "\"\<Vietnamese revenge for Vietnam War\>\""}], "}"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{"c", "[", "f", "]"}]}], "Input",
+ CellChangeTimes->{{3.8681586583951035`*^9, 3.8681587086745844`*^9}},
+ CellLabel->"In[41]:=",ExpressionUUID->"9bb54b66-492e-4ce2-942a-4d9e8b65c9fd"],
+
+Cell[BoxData["\<\"War\"\>"], "Output",
+ CellChangeTimes->{3.8681587190491915`*^9, 3.8682612823279514`*^9, 
+  3.8688748484751425`*^9, 3.885949034768779*^9},
+ CellLabel->"Out[42]=",ExpressionUUID->"9de6a443-e2b2-4b60-a78b-86e05d13cf3c"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"f", "=", 
+   RowBox[{"{", 
+    RowBox[{
+    "\"\<2023\>\"", ",", "\"\<USA\>\"", ",", " ", "\"\<Iran\>\"", ",", 
+     "\"\<Severe ideological differences\>\""}], "}"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{"c", "[", "f", "]"}]}], "Input",
+ CellChangeTimes->{{3.8681590738480177`*^9, 3.868159086601031*^9}},
+ CellLabel->"In[43]:=",ExpressionUUID->"dc0277fc-5190-48c3-9412-d16ae473e95f"],
+
+Cell[BoxData["\<\"War\"\>"], "Output",
+ CellChangeTimes->{{3.868159088352858*^9, 3.86815909797293*^9}, 
+   3.8682612823962245`*^9, 3.8688748515461683`*^9, 3.885949034828787*^9},
+ CellLabel->"Out[44]=",ExpressionUUID->"1efed6f5-ad4c-4eea-887b-cced1cd8dfb1"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"f", "=", 
+   RowBox[{"{", 
+    RowBox[{
+    "\"\<2023\>\"", ",", "\"\<Iran\>\"", ",", " ", "\"\<Israel\>\"", ",", 
+     "\"\<Severe ideological differences\>\""}], "}"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{"c", "[", "f", "]"}]}], "Input",
+ CellChangeTimes->{{3.868250738223817*^9, 3.8682507423799*^9}},
+ CellLabel->"In[45]:=",ExpressionUUID->"4067dbec-0e03-4adf-99f2-302f18debf96"],
+
+Cell[BoxData["\<\"War\"\>"], "Output",
+ CellChangeTimes->{3.8682507593949203`*^9, 3.8682612824585066`*^9, 
+  3.8688748538681836`*^9, 3.8859490348937883`*^9},
+ CellLabel->"Out[46]=",ExpressionUUID->"3ba8ef5d-39c7-430a-b32e-23f5952aa387"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"f", "=", 
+   RowBox[{"{", 
+    RowBox[{
+    "\"\<2023\>\"", ",", "\"\<USA\>\"", ",", " ", "\"\<United Kingdom\>\"", 
+     ",", "\"\<Mutual distrust\>\""}], "}"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{"c", "[", "f", "]"}]}], "Input",
+ CellChangeTimes->{{3.868161628510089*^9, 3.8681616341505194`*^9}, {
+  3.8681617085541716`*^9, 3.8681617325376997`*^9}, {3.868166986249136*^9, 
+  3.8681669904080944`*^9}},
+ CellLabel->"In[47]:=",ExpressionUUID->"7bc71259-71a7-44a0-b7cb-8b5a9dfa14e6"],
+
+Cell[BoxData["\<\"War\"\>"], "Output",
+ CellChangeTimes->{3.868161750990152*^9, 3.8681670221123085`*^9, 
+  3.8682612825187516`*^9, 3.8688748562750287`*^9, 3.885949034958798*^9},
+ CellLabel->"Out[48]=",ExpressionUUID->"423e5c6e-387b-49bd-ba95-1907d6f49089"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"f", "=", 
+   RowBox[{"{", 
+    RowBox[{
+    "\"\<2023\>\"", ",", "\"\<USA\>\"", ",", " ", "\"\<North Korea\>\"", ",", 
+     "\"\<Severe ideological differences\>\""}], "}"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{"c", "[", "f", "]"}]}], "Input",
+ CellChangeTimes->{{3.867282560303*^9, 3.867282593379941*^9}},
+ CellLabel->"In[49]:=",ExpressionUUID->"cbe13878-8f94-46f1-8096-9692d024427a"],
+
+Cell[BoxData["\<\"War\"\>"], "Output",
+ CellChangeTimes->{{3.867282595629861*^9, 3.867282620019612*^9}, 
+   3.8673193240667763`*^9, 3.867322162104197*^9, 3.867323783722783*^9, 
+   3.867391587333767*^9, 3.8674534962864428`*^9, 3.868261282609135*^9, 
+   3.868874858565897*^9, 3.8859490350188656`*^9},
+ CellLabel->"Out[50]=",ExpressionUUID->"cd429613-54a4-4b35-8ad7-f07da3dbe62d"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"f", "=", 
+   RowBox[{"{", 
+    RowBox[{
+    "\"\<2023\>\"", ",", "\"\<United Kingdom\>\"", ",", " ", 
+     "\"\<Germany\>\"", ",", "\"\<Mutual distrust\>\""}], "}"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{"c", "[", "f", "]"}]}], "Input",
+ CellChangeTimes->{{3.8682608055208178`*^9, 3.868260843074912*^9}},
+ CellLabel->"In[51]:=",ExpressionUUID->"75b517c3-e3c3-45f2-9d93-2e5bcb494a55"],
+
+Cell[BoxData["\<\"War\"\>"], "Output",
+ CellChangeTimes->{3.8682608601562595`*^9, 3.868261282677425*^9, 
+  3.868874860925768*^9, 3.885949035083815*^9},
+ CellLabel->"Out[52]=",ExpressionUUID->"bb4e3e4b-efea-4e44-ace3-c986c700eee9"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"f", "=", 
+   RowBox[{"{", 
+    RowBox[{
+    "\"\<2030s-2040s\>\"", ",", "\"\<NATO\>\"", ",", " ", "\"\<Russia\>\"", 
+     ",", "\"\<Mutual distrust\>\""}], "}"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{"c", "[", "f", "]"}]}], "Input",
+ CellChangeTimes->{{3.855207322237731*^9, 3.855207389735381*^9}, {
+  3.8552074356244135`*^9, 3.8552074485927124`*^9}, {3.8552076522418785`*^9, 
+  3.855207659991609*^9}, {3.855207781470192*^9, 3.8552077889074335`*^9}, {
+  3.855208400239699*^9, 3.855208412942387*^9}, {3.8552085625159593`*^9, 
+  3.855208563234699*^9}, {3.8552086561064777`*^9, 3.855208656497096*^9}, {
+  3.867453497848895*^9, 3.867453501270672*^9}},
+ CellLabel->"In[53]:=",ExpressionUUID->"d13b844a-e337-4eb9-b8b5-778c930f3356"],
+
+Cell[BoxData["\<\"War\"\>"], "Output",
+ CellChangeTimes->{{3.8552073705173006`*^9, 3.8552074490614448`*^9}, 
+   3.855207481591564*^9, {3.8552076380392494`*^9, 3.8552076626917567`*^9}, {
+   3.855207770298705*^9, 3.8552077919542027`*^9}, {3.855208384162133*^9, 
+   3.855208444644406*^9}, 3.8552086025926933`*^9, 3.8552086571064215`*^9, 
+   3.8672350586315527`*^9, 3.867282621800799*^9, 3.867319325987831*^9, 
+   3.867322164509423*^9, 3.867323785929045*^9, 3.867391589239133*^9, 
+   3.867453502551877*^9, 3.868261282739686*^9, 3.868874863611274*^9, 
+   3.8859490351488276`*^9},
+ CellLabel->"Out[54]=",ExpressionUUID->"e22a84f1-cab9-449d-bf65-5d4ec497b4c7"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"FindClusters", "[", 
+  RowBox[{
+   RowBox[{"{", 
+    RowBox[{"\"\<USA\>\"", ",", "\"\<Rest of the world\>\""}], "}"}], ",", 
+   "2"}], "]"}]], "Input",
+ CellChangeTimes->{{3.8681669316226025`*^9, 3.8681669590343986`*^9}},
+ CellLabel->"In[55]:=",ExpressionUUID->"60d0e70f-102f-4535-a602-ed3e2c313617"],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+   RowBox[{"{", "\<\"USA\"\>", "}"}], ",", 
+   RowBox[{"{", "\<\"Rest of the world\"\>", "}"}]}], "}"}]], "Output",
+ CellChangeTimes->{3.8681669624992247`*^9, 3.86816751249364*^9, 
+  3.868251924500681*^9, 3.868261282978424*^9, 3.868333762221834*^9, 
+  3.8686742567725525`*^9, 3.8688748679231186`*^9, 3.885949036577342*^9},
+ CellLabel->"Out[55]=",ExpressionUUID->"55e6dd07-82a1-4355-b726-5a646aba7b0e"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"FindClusters", "[", 
+  RowBox[{
+   RowBox[{"{", 
+    RowBox[{
+    "\"\<USA\>\"", ",", "\"\<Russia\>\"", ",", "\"\<Ukraine\>\"", ",", 
+     "\"\<United Kingdom\>\"", ",", "\"\<India\>\"", ",", "\"\<China\>\"", 
+     ",", "\"\<Saudi Arabia\>\"", ",", "\"\<Iran\>\"", ",", 
+     "\"\<Pakistan\>\"", ",", "\"\<Germany\>\"", ",", "\"\<France\>\"", ",", 
+     "\"\<Baltic nations\>\"", ",", "\"\<Taiwan\>\"", ",", "\"\<Vietnam\>\"", 
+     ",", "\"\<North Korea\>\"", ",", "\"\<NATO\>\"", ",", "\"\<Sweden\>\"", 
+     ",", "\"\<Norway\>\""}], "}"}], ",", "2"}], "]"}]], "Input",
+ CellChangeTimes->{
+  3.8681669732116756`*^9, {3.8681670373233805`*^9, 3.8681672289829254`*^9}, {
+   3.8681672825743256`*^9, 3.868167292149145*^9}, {3.868167579096901*^9, 
+   3.8681675942319293`*^9}, {3.8681677258983784`*^9, 3.868167774724651*^9}, {
+   3.868167820844885*^9, 3.868167855114692*^9}, {3.868168024440517*^9, 
+   3.86816810857099*^9}, {3.868168145233909*^9, 3.8681681535335903`*^9}, {
+   3.868168448343926*^9, 3.8681684699475822`*^9}, {3.8682519497890806`*^9, 
+   3.8682519571254525`*^9}, {3.8682521267087955`*^9, 
+   3.8682521277273235`*^9}, {3.868333377321416*^9, 3.8683333857455397`*^9}, {
+   3.8692219650776997`*^9, 3.8692220094041977`*^9}},
+ CellLabel->"In[1]:=",ExpressionUUID->"9f39493e-f8ba-4b65-bdc2-8ae3f62fffb6"],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+   RowBox[{"{", 
+    RowBox[{"\<\"USA\"\>", ",", "\<\"Russia\"\>", ",", "\<\"Ukraine\"\>", 
+     ",", "\<\"United Kingdom\"\>", ",", "\<\"India\"\>", 
+     ",", "\<\"China\"\>", ",", "\<\"Saudi Arabia\"\>", ",", "\<\"Iran\"\>", 
+     ",", "\<\"Pakistan\"\>", ",", "\<\"Germany\"\>", ",", "\<\"France\"\>", 
+     ",", "\<\"Baltic nations\"\>", ",", "\<\"Taiwan\"\>", 
+     ",", "\<\"North Korea\"\>", ",", "\<\"NATO\"\>", ",", "\<\"Sweden\"\>", 
+     ",", "\<\"Norway\"\>"}], "}"}], ",", 
+   RowBox[{"{", "\<\"Vietnam\"\>", "}"}]}], "}"}]], "Output",
+ CellChangeTimes->{
+  3.868167213450198*^9, 3.8681672559473085`*^9, 3.868167293606656*^9, 
+   3.8681675144366226`*^9, {3.8681675795761538`*^9, 3.8681675949651785`*^9}, 
+   3.8681677340418634`*^9, {3.8681678226722136`*^9, 3.8681678556317267`*^9}, 
+   3.8681680420462713`*^9, {3.8681680726532097`*^9, 3.868168109243717*^9}, {
+   3.868168146785103*^9, 3.868168154375681*^9}, 3.868168453380638*^9, 
+   3.868168546473899*^9, 3.8682519250143623`*^9, 3.8682521320790687`*^9, 
+   3.868261283141182*^9, 3.868333389809898*^9, 3.8683336609233694`*^9, 
+   3.8683337640592575`*^9, 3.8686742594443345`*^9, {3.868874868878905*^9, 
+   3.868874871742387*^9}, 3.869220952110059*^9, {3.8692219829832945`*^9, 
+   3.8692220103885365`*^9}, 3.8692267132593346`*^9, 3.885949036958311*^9, 
+   3.9023855078080206`*^9},
+ CellLabel->"Out[1]=",ExpressionUUID->"41f61f2c-f491-4d4b-8385-1d25461617e2"]
+}, Open  ]]
+},
+WindowSize->{1012.5, 501.75},
+WindowMargins->{{0, Automatic}, {Automatic, 0}},
+FrontEndVersion->"13.0 for Microsoft Windows (64-bit) (February 4, 2022)",
+StyleDefinitions->"Default.nb",
+ExpressionUUID->"fd4e201c-8b55-4572-b039-a9510b34f06c"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[558, 20, 851, 20, 67, "Input",ExpressionUUID->"6667177e-3fdb-42d0-bb2f-5d25c9208a84"],
+Cell[CellGroupData[{
+Cell[1434, 44, 5623, 128, 428, "Input",ExpressionUUID->"01387ae7-6a34-441e-b422-327ae10a0cc7"],
+Cell[7060, 174, 10089, 248, 325, "Output",ExpressionUUID->"baa71d95-c719-4d21-834a-1d03d4994b2d"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[17186, 427, 518, 12, 48, "Input",ExpressionUUID->"08301fd3-fadd-41eb-86a3-b4d070c9dd9b"],
+Cell[17707, 441, 607, 9, 32, "Output",ExpressionUUID->"c11dd48c-079c-4990-bbb9-c0388b2908e4"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[18351, 455, 567, 11, 48, "Input",ExpressionUUID->"ea57b08b-8cd5-4ba9-bd3c-dc8615edea52"],
+Cell[18921, 468, 842, 12, 32, "Output",ExpressionUUID->"3352a3e6-44d0-4d13-bd1a-d3312fc3497e"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[19800, 485, 419, 9, 48, "Input",ExpressionUUID->"03d95bc0-87a4-437f-a64a-cf7db605c9b2"],
+Cell[20222, 496, 383, 5, 32, "Output",ExpressionUUID->"ba8a4caf-fafe-43a6-88db-58b3197da9c3"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[20642, 506, 423, 9, 48, "Input",ExpressionUUID->"0df5df88-228d-4c29-9e8c-ea15046f6b6c"],
+Cell[21068, 517, 325, 4, 32, "Output",ExpressionUUID->"151ced70-3325-4841-aacb-1ece290ee3ed"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[21430, 526, 433, 10, 48, "Input",ExpressionUUID->"8e28672a-671f-489d-8f15-1a43b60e24eb"],
+Cell[21866, 538, 257, 3, 32, "Output",ExpressionUUID->"3d7815cf-5460-4e0b-8cb9-da35331ed990"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[22160, 546, 662, 13, 48, "Input",ExpressionUUID->"cc96e3f8-1395-4649-b86a-135f49dd6e74"],
+Cell[22825, 561, 924, 13, 32, "Output",ExpressionUUID->"cc0b5519-f23e-45e8-b59a-cccd96d1a954"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[23786, 579, 487, 11, 48, "Input",ExpressionUUID->"dc93cea2-7b79-4176-8eff-0ef13e9cf3fc"],
+Cell[24276, 592, 336, 5, 32, "Output",ExpressionUUID->"31e2be9f-ef66-4746-a0da-43e82dfe4ce4"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[24649, 602, 413, 9, 48, "Input",ExpressionUUID->"97df786b-eecc-4d9e-b27e-e73a7fcfa5eb"],
+Cell[25065, 613, 232, 3, 32, "Output",ExpressionUUID->"14f7a7ab-c236-4640-8862-a0f570f408d2"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[25334, 621, 510, 11, 48, "Input",ExpressionUUID->"ea1982ce-f657-4e87-b8b3-638e96e3533d"],
+Cell[25847, 634, 212, 3, 32, "Output",ExpressionUUID->"22e07512-b5ec-46e4-a6fa-2ea6bb429a39"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[26096, 642, 456, 10, 48, "Input",ExpressionUUID->"6771d6b6-9bdb-4523-977e-e310dd220f72"],
+Cell[26555, 654, 185, 2, 32, "Output",ExpressionUUID->"bb48bd37-4257-493b-8d77-ba10e3bf3a10"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[26777, 661, 558, 12, 48, "Input",ExpressionUUID->"f87c4242-72c8-47ab-bf3a-924c325148c2"],
+Cell[27338, 675, 230, 3, 32, "Output",ExpressionUUID->"096734b2-81f6-465d-8d3a-ab068cbee021"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[27605, 683, 612, 13, 67, "Input",ExpressionUUID->"5d0d8b63-ce23-4cb4-9c88-388b3cb69a0d"],
+Cell[28220, 698, 335, 4, 32, "Output",ExpressionUUID->"9048bab5-32fa-4322-adbe-a5f9aac0fd9f"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[28592, 707, 553, 12, 48, "Input",ExpressionUUID->"cb4cd827-a352-486c-a2e6-29e5b8a5ff91"],
+Cell[29148, 721, 360, 5, 32, "Output",ExpressionUUID->"f2780d3d-b8f5-4043-93cf-bd2762a34f8d"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[29545, 731, 427, 10, 48, "Input",ExpressionUUID->"b32596a8-f916-4b10-9318-11e86cc5b0d1"],
+Cell[29975, 743, 310, 4, 32, "Output",ExpressionUUID->"b6ff5072-23f7-4601-85fc-1276ba29cb69"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[30322, 752, 490, 10, 48, "Input",ExpressionUUID->"3c7367a5-992e-4808-b2b6-85033b693925"],
+Cell[30815, 764, 383, 5, 32, "Output",ExpressionUUID->"e049b97c-a577-4e23-aa07-880b080ab44a"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[31235, 774, 503, 11, 48, "Input",ExpressionUUID->"d88bb70f-5f71-497d-ac9d-0a21cf2a1b0c"],
+Cell[31741, 787, 436, 6, 32, "Output",ExpressionUUID->"e781465c-b453-4d03-932a-29da612bd361"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[32214, 798, 434, 10, 48, "Input",ExpressionUUID->"09ec1595-7e28-4766-ab7f-3d3b754bf4ac"],
+Cell[32651, 810, 233, 3, 32, "Output",ExpressionUUID->"1f3b4475-5570-4687-835c-b97a54637a61"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[32921, 818, 498, 11, 48, "Input",ExpressionUUID->"34607a66-2182-4cac-a513-95d41a4fcd78"],
+Cell[33422, 831, 485, 6, 32, "Output",ExpressionUUID->"7f17434a-1f0f-4e5c-8bd2-abcf574f49a9"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[33944, 842, 437, 10, 48, "Input",ExpressionUUID->"9bb54b66-492e-4ce2-942a-4d9e8b65c9fd"],
+Cell[34384, 854, 234, 3, 32, "Output",ExpressionUUID->"9de6a443-e2b2-4b60-a78b-86e05d13cf3c"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[34655, 862, 428, 10, 48, "Input",ExpressionUUID->"dc0277fc-5190-48c3-9412-d16ae473e95f"],
+Cell[35086, 874, 256, 3, 32, "Output",ExpressionUUID->"1efed6f5-ad4c-4eea-887b-cced1cd8dfb1"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[35379, 882, 427, 10, 48, "Input",ExpressionUUID->"4067dbec-0e03-4adf-99f2-302f18debf96"],
+Cell[35809, 894, 236, 3, 32, "Output",ExpressionUUID->"3ba8ef5d-39c7-430a-b32e-23f5952aa387"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[36082, 902, 524, 11, 48, "Input",ExpressionUUID->"7bc71259-71a7-44a0-b7cb-8b5a9dfa14e6"],
+Cell[36609, 915, 256, 3, 32, "Output",ExpressionUUID->"423e5c6e-387b-49bd-ba95-1907d6f49089"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[36902, 923, 430, 10, 48, "Input",ExpressionUUID->"cbe13878-8f94-46f1-8096-9692d024427a"],
+Cell[37335, 935, 377, 5, 32, "Output",ExpressionUUID->"cd429613-54a4-4b35-8ad7-f07da3dbe62d"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[37749, 945, 427, 10, 48, "Input",ExpressionUUID->"75b517c3-e3c3-45f2-9d93-2e5bcb494a55"],
+Cell[38179, 957, 230, 3, 32, "Output",ExpressionUUID->"bb4e3e4b-efea-4e44-ace3-c986c700eee9"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[38446, 965, 767, 14, 48, "Input",ExpressionUUID->"d13b844a-e337-4eb9-b8b5-778c930f3356"],
+Cell[39216, 981, 653, 9, 32, "Output",ExpressionUUID->"e22a84f1-cab9-449d-bf65-5d4ec497b4c7"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[39906, 995, 324, 7, 28, "Input",ExpressionUUID->"60d0e70f-102f-4535-a602-ed3e2c313617"],
+Cell[40233, 1004, 441, 8, 32, "Output",ExpressionUUID->"55e6dd07-82a1-4355-b726-5a646aba7b0e"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[40711, 1017, 1331, 22, 48, "Input",ExpressionUUID->"9f39493e-f8ba-4b65-bdc2-8ae3f62fffb6"],
+Cell[42045, 1041, 1460, 24, 52, "Output",ExpressionUUID->"41f61f2c-f491-4d4b-8385-1d25461617e2"]
+}, Open  ]]
+}
+]
+*)
+
